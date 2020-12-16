@@ -1,7 +1,14 @@
 <label>Login</label>
-<input #login type="text"/>
+<div class="fi_row">
+  <input #login type="text" class="textfield">
+</div>
 <label>Password</label>
-<input #password type="password">
-<label></label>
-<button (click)="onSingIn(login.value, password.value)">Sign in</button>
+<div class="fi_row">
+  <input #password type="password" class="textfield">
+</div>
+<div class="fi_row">
+  <button (click)="onSingIn(login.value, password.value)" class="Btn Btn_theme_regular">
+    <div class="Btn__text">Sign in</div>
+  </button>
+</div>
 <div class="process" *ngIf="process"></div>

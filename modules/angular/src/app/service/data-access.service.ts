@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CubaApp } from '@cuba-platform/rest';
+import {from, Observable} from 'rxjs';
+import {Token} from '../app-store/types/auth/token';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +15,14 @@ export class DataAccessService {
 
   constructor() {}
 
-  public auth(loginPassword: { login: string, password: string }): void {
-    this.cubaApp.login(
+  public auth(loginPassword: { login: string, password: string }): Observable<Token> {
+    return from(this.cubaApp.login(
       loginPassword.login,
       loginPassword.password
-    ).then(res => {
-      console.log(res);
-    }, res => {
-      console.log(res);
-    });
+    ).then(
+        (success) => success,
+        (reject) => null
+      )
+    );
   }
 }

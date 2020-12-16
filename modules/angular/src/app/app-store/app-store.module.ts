@@ -5,19 +5,25 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../../environments/environment';
+import {authReducer} from './reducers/auth.reducer';
+import {AuthEffects} from './effects/auth.effects';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    NgrxStoreModule.forRoot({}, {
+    NgrxStoreModule.forRoot({
+      auth: authReducer
+    }, {
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,
       }
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([
+      AuthEffects
+    ]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
