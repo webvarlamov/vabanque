@@ -3,5 +3,6 @@
     <persistence-unit name="vabanque" transaction-type="RESOURCE_LOCAL">
 
         <class>com.company.vabanque.entity.Transaction</class>
+        <class>com.company.vabanque.entity.Account</class>
     </persistence-unit>
 </persistence>

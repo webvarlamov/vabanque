@@ -6,7 +6,10 @@
     <data>
         <instance id="transactionDc"
                   class="com.company.vabanque.entity.Transaction">
-            <view extends="_local"/>
+            <view extends="_local">
+                <property name="from" view="_minimal"/>
+                <property name="to" fetch="AUTO" view="_minimal"/>
+            </view>
             <loader/>
         </instance>
     </data>
@@ -16,8 +19,23 @@
         <form id="form" dataContainer="transactionDc">
             <column width="350px">
                 <dateField id="dateField" property="date"/>
+                <textField id="nameField" property="name"/>
+                <textField id="descriptionField" property="description"/>
+                <checkBox id="confirmedField" property="confirmed"/>
                 <timeField id="timeField" property="time"/>
                 <textField id="sumField" property="sum"/>
+                <pickerField id="fromField" property="from">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="toField" property="to">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

@@ -2,5 +2,6 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-vabanque" insertBefore="administration" caption="mainMsg://menu_config.application-vabanque">
         <item screen="vabanque_Transaction.browse" caption="mainMsg://menu_config.vabanque_Transaction.browse"/>
+        <item screen="vabanque_Account.browse" caption="mainMsg://menu_config.vabanque_Account.browse"/>
     </menu>
 </menu-config>

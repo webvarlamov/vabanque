@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
-        caption="msg://transactionBrowse.caption"
-        focusComponent="transactionsTable"
-        messagesPack="com.company.vabanque.web.screens.transaction">
+        caption="msg://accountBrowse.caption"
+        focusComponent="accountsTable"
+        messagesPack="com.company.vabanque.web.screens.account">
     <data readOnly="true">
-        <collection id="transactionsDc"
-                    class="com.company.vabanque.entity.Transaction">
-            <view extends="_local"/>
-            <loader id="transactionsDl">
+        <collection id="accountsDc"
+                    class="com.company.vabanque.entity.Account">
+            <view extends="_local">
+                <property name="income" view="_minimal"/>
+                <property name="outcome" view="_minimal"/>
+            </view>
+            <loader id="accountsDl">
                 <query>
-                    <![CDATA[select e from vabanque_Transaction e]]>
+                    <![CDATA[select e from vabanque_Account e]]>
                 </query>
             </loader>
         </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="transactionsTable"
+    <layout expand="accountsTable"
             spacing="true">
         <filter id="filter"
-                applyTo="transactionsTable"
-                dataLoader="transactionsDl">
+                applyTo="accountsTable"
+                dataLoader="accountsDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="transactionsTable"
+        <groupTable id="accountsTable"
                     width="100%"
-                    dataContainer="transactionsDc">
+                    dataContainer="accountsDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="date"/>
                 <column id="name"/>
+                <column id="type"/>
                 <column id="description"/>
-                <column id="confirmed"/>
-                <column id="time"/>
-                <column id="sum"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="transactionsTable.create"/>
-                <button id="editBtn" action="transactionsTable.edit"/>
-                <button id="removeBtn" action="transactionsTable.remove"/>
+                <button id="createBtn" action="accountsTable.create"/>
+                <button id="editBtn" action="accountsTable.edit"/>
+                <button id="removeBtn" action="accountsTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
