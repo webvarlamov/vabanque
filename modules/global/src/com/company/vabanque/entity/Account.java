@@ -1,13 +1,13 @@
 package com.company.vabanque.entity;
 
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Table(name = "VABANQUE_ACCOUNT")
 @Entity(name = "vabanque_Account")
@@ -16,19 +16,41 @@ public class Account extends StandardEntity {
     private static final long serialVersionUID = -3890904263600479728L;
 
     @Column(name = "NAME")
-    private String name;
-
-    @OneToMany(mappedBy = "from")
-    private List<Transaction> income;
+    protected String name;
 
     @OneToMany(mappedBy = "to")
-    private List<Transaction> outcome;
+    protected List<Transaction> income;
+
+    @OneToMany(mappedBy = "from")
+    protected List<Transaction> outcome;
 
     @Column(name = "TYPE_")
-    private Integer type;
+    protected Integer type;
 
     @Column(name = "DESCRIPTION")
-    private String description;
+    protected String description;
+
+    @Transient
+    @MetaProperty(related = "income")
+    public Integer getIncomeTotal() {
+        return Optional
+                .ofNullable(getIncome())
+                .orElse(new ArrayList<>())
+                .stream()
+                .mapToInt(Transaction::getSum)
+                .sum();
+    }
+
+    @Transient
+    @MetaProperty(related = "outcome")
+    public Integer getOutcomeTotal() {
+        return Optional
+                .ofNullable(getOutcome())
+                .orElse(new ArrayList<>())
+                .stream()
+                .mapToInt(Transaction::getSum)
+                .sum();
+    }
 
     public AccountType getType() {
         return type == null ? null : AccountType.fromId(type);

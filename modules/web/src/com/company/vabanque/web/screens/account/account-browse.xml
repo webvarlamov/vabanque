@@ -7,10 +7,7 @@
     <data readOnly="true">
         <collection id="accountsDc"
                     class="com.company.vabanque.entity.Account">
-            <view extends="_local">
-                <property name="income" view="_minimal"/>
-                <property name="outcome" view="_minimal"/>
-            </view>
+            <view extends="account-with-transactions-view"/>
             <loader id="accountsDl">
                 <query>
                     <![CDATA[select e from vabanque_Account e]]>
@@ -39,6 +36,8 @@
                 <column id="name"/>
                 <column id="type"/>
                 <column id="description"/>
+                <column id="incomeTotal"/>
+                <column id="outcomeTotal"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
