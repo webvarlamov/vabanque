@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import {DataAccessService} from '../../../../service/data-access.service';
 
 @Component({
   selector: 'app-auth-view',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public store: Store,
+    public dataAccessService: DataAccessService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onSignIn(loginPassword: { login: string, password: string }): void {
+    this.dataAccessService.auth(loginPassword);
   }
-
 }

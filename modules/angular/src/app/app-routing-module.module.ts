@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
-import {AuthViewComponent} from './view/auth-view/component/auth-view/auth-view.component';
-import {HomeViewComponent} from './view/home-view/component/home-view/home-view.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthViewComponent } from './view/auth-view/component/auth-view/auth-view.component';
+import { HomeViewComponent } from './view/home-view/component/home-view/home-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },

@@ -1,0 +1,7 @@
+<label>Login</label>
+<input #login type="text"/>
+<label>Password</label>
+<input #password type="password">
+<label></label>
+<button (click)="onSingIn(login.value, password.value)">Sign in</button>
+<div class="process" *ngIf="process"></div>

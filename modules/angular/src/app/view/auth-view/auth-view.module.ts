@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthViewComponent } from './component/auth-view/auth-view.component';
+import {AuthComponentsModule} from '../../modules/auth-components/auth-components.module';
 
 
 
@@ -9,7 +10,8 @@ import { AuthViewComponent } from './component/auth-view/auth-view.component';
     AuthViewComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AuthComponentsModule
   ]
 })
 export class AuthViewModule { }
