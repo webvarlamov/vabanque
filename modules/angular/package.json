@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "cuba-gen": "gen-cuba-front --dest C:\\Users\\varlamov\\Desktop\\vabanque\\modules\\angular\\src\\app\\app-store\\types\\cuba sdk:model"
   },
   "private": true,
   "dependencies": {
