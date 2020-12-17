@@ -1,2 +1,5 @@
-<app-dashboard-view></app-dashboard-view>
-<app-table-view></app-table-view>
+<div class="charts-grid">
+  <ng-container *ngFor="let chart of charts">
+    <app-chart></app-chart>
+  </ng-container>
+</div>
