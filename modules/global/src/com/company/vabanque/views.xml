@@ -2,7 +2,7 @@
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
     <view entity="vabanque_Account"
-          name="account-with-transactions-view"
+          name="_account-with-transactions-view"
           extends="_local">
         <property name="income" view="_local"/>
         <property name="outcome" view="_local"/>

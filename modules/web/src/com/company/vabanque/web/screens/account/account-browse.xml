@@ -7,7 +7,7 @@
     <data readOnly="true">
         <collection id="accountsDc"
                     class="com.company.vabanque.entity.Account">
-            <view extends="account-with-transactions-view"/>
+            <view extends="_account-with-transactions-view"/>
             <loader id="accountsDl">
                 <query>
                     <![CDATA[select e from vabanque_Account e]]>

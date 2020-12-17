@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import {selectAccounts} from '../../../../app-store/selectors/accounts.selectors';
+import {loadAccounts} from '../../../../app-store/actions/accounts.actions';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home-view',
@@ -48,11 +52,20 @@ export class HomeViewComponent implements OnInit {
       chartType: 'line'
     }
   ];
+  private accounts$ = this.store.select(selectAccounts).pipe();
+  private charts$ = this.accounts$.pipe(
+    map(accounts => {
+      accounts.map(account => {
 
-  constructor() { }
+      });
+    })
+  );
 
-  ngOnInit(): void {}
+  constructor(
+    private store: Store
+  ) {}
 
-
-
+  ngOnInit(): void {
+    this.store.dispatch(loadAccounts());
+  }
 }

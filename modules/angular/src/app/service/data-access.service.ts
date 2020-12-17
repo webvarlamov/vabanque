@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CubaApp } from '@cuba-platform/rest';
+import {CubaApp, EntitiesLoadOptions, FetchOptions} from '@cuba-platform/rest';
 import {from, Observable} from 'rxjs';
 import {Token} from '../app-store/types/auth/token';
+import {StandardEntity} from '../app-store/types/cuba/entities/base/sys$StandardEntity';
+import {Account} from '../app-store/types/cuba/entities/vabanque_Account';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +26,9 @@ export class DataAccessService {
         (reject) => null
       )
     );
+  }
+
+  public loadAccounts(options?: EntitiesLoadOptions, fetchOptions?: FetchOptions): Observable<Account[]> {
+    return from(this.cubaApp.loadEntities<Account>( Account.NAME, {view: '_account-with-transactions-view'}));
   }
 }

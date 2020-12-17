@@ -7,6 +7,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../../environments/environment';
 import {authReducer} from './reducers/auth.reducer';
 import {AuthEffects} from './effects/auth.effects';
+import {AccountsEffects} from './effects/accounts.effects';
+import {accountsReducer} from './reducers/accounts.reducer';
 
 
 @NgModule({
@@ -14,7 +16,8 @@ import {AuthEffects} from './effects/auth.effects';
   imports: [
     CommonModule,
     NgrxStoreModule.forRoot({
-      auth: authReducer
+      auth: authReducer,
+      accounts: accountsReducer
     }, {
       runtimeChecks: {
         strictStateImmutability: true,
@@ -22,7 +25,8 @@ import {AuthEffects} from './effects/auth.effects';
       }
     }),
     EffectsModule.forRoot([
-      AuthEffects
+      AuthEffects,
+      AccountsEffects
     ]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({

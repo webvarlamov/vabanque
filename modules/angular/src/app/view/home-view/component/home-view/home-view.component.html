@@ -1,5 +1,6 @@
 <div class="charts-grid">
-  <ng-container *ngFor="let chart of charts">
-    <app-chart></app-chart>
-  </ng-container>
+<!--  <ng-container *ngFor="let chart of charts">-->
+<!--    <app-chart></app-chart>-->
+<!--  </ng-container>-->
+  {{accounts$ | async | json}}
 </div>
