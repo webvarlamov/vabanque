@@ -1,0 +1,6 @@
+:host {
+  display: block;
+  height: 40px;
+  width: 100%;
+  background-color: var(--background_content);
+}

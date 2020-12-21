@@ -1,2 +1,6 @@
 @import "assets/common.css";
 @import "assets/variables.css";
+
+body {
+  min-height: 100vh;
+}

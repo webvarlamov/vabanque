@@ -25,7 +25,7 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(userAuthSuccess),
       switchMap(action => {
-        this.router.navigate(['home']);
+        this.router.navigate(['home', 'dash']);
         return [];
       })
     );

@@ -9,6 +9,7 @@ import {authReducer} from './reducers/auth.reducer';
 import {AuthEffects} from './effects/auth.effects';
 import {AccountsEffects} from './effects/accounts.effects';
 import {accountsReducer} from './reducers/accounts.reducer';
+import {dashReducer} from './reducers/dash.reducer';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {accountsReducer} from './reducers/accounts.reducer';
     CommonModule,
     NgrxStoreModule.forRoot({
       auth: authReducer,
-      accounts: accountsReducer
+      accounts: accountsReducer,
+      dash: dashReducer
     }, {
       runtimeChecks: {
         strictStateImmutability: true,

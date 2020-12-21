@@ -29,6 +29,6 @@ export class DataAccessService {
   }
 
   public loadAccounts(options?: EntitiesLoadOptions, fetchOptions?: FetchOptions): Observable<Account[]> {
-    return from(this.cubaApp.loadEntities<Account>( Account.NAME, {view: '_account-with-transactions-view'}));
+    return from(this.cubaApp.loadEntities<Account>( Account.NAME, {view: '_local'}));
   }
 }

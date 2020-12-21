@@ -4,15 +4,19 @@ import { HomeViewComponent } from './component/home-view/home-view.component';
 import { RouterModule } from '@angular/router';
 import { HomeCanLoadGuard } from '../../guard/home-can-load.guard';
 import { ChartModule } from '../../modules/chart/chart.module';
+import { DashboardViewComponent } from './view/dashboard-view/component/dashboard-view/dashboard-view.component';
+import { HomeMenuComponent } from './component/home-menu/home-menu.component';
 
 @NgModule({
-  declarations: [HomeViewComponent],
+  declarations: [HomeViewComponent, HomeMenuComponent],
   imports: [
     RouterModule.forChild([
-      { path: '', component: HomeViewComponent },
+      { path: '',  component: HomeViewComponent, children: [
+          { path: 'dash', component: DashboardViewComponent }
+        ]}
     ]),
     CommonModule,
-    ChartModule
+    ChartModule,
   ],
   providers: [HomeCanLoadGuard],
 })
