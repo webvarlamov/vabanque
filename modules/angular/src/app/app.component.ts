@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,5 @@ import {BehaviorSubject} from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public ba = new BehaviorSubject('1');
   title = 'angular';
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectDashWidgets } from '../../../../../../app-store/selectors/dash.selectors';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-view',

@@ -6,6 +6,7 @@ import { HomeCanLoadGuard } from '../../guard/home-can-load.guard';
 import { ChartModule } from '../../modules/chart/chart.module';
 import { DashboardViewComponent } from './view/dashboard-view/component/dashboard-view/dashboard-view.component';
 import { HomeMenuComponent } from './component/home-menu/home-menu.component';
+import {DashboardViewModule} from './view/dashboard-view/dashboard-view.module';
 
 @NgModule({
   declarations: [HomeViewComponent, HomeMenuComponent],
@@ -15,6 +16,7 @@ import { HomeMenuComponent } from './component/home-menu/home-menu.component';
           { path: 'dash', component: DashboardViewComponent }
         ]}
     ]),
+    DashboardViewModule,
     CommonModule,
     ChartModule,
   ],
