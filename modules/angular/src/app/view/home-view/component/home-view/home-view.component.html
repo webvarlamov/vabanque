@@ -1,2 +1,72 @@
-<app-home-menu></app-home-menu>
-<router-outlet></router-outlet>
+<div class="accounts-grid">
+  <ng-container *ngFor="let account of accountsWithTransactions$ | async">
+    <div class="wall_item">
+      <div class="wi_head">
+        <div class="wi_cont">
+          <div class="wi_author">{{account.account.name}}</div>
+          <div class="wi_info">{{account.account.description}}</div>
+        </div>
+        <div class="chart-container">
+          <app-chart [chartDataSets]="account.dataSets"></app-chart>
+<!--          //{{ | json}}-->
+        </div>
+        <div class="split-tables">
+          <div class="table-container">
+            <h3>Income</h3>
+            <table title="Income" border="1" cellpadding="4">
+              <thead>
+              <tr>
+                <td width="20%">Date</td>
+                <td width="10%">Sum</td>
+                <td width="30%">Name</td>
+                <td width="10%">Confirmed</td>
+                <td width="20%">Description</td>
+                <td width="10%">From</td>
+                <td width="10%">To</td>
+              </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let transaction of account.account.income">
+                  <td>{{transaction.date | date}}</td>
+                  <td>{{transaction.sum}}</td>
+                  <td>{{transaction.name}}</td>
+                  <td>{{transaction.confirmed}}</td>
+                  <td>{{transaction.description}}</td>
+                  <td>{{transaction.from.name}}</td>
+                  <td>{{transaction.to.name}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-container">
+            <h3>Outcome</h3>
+            <table title="Outcome" border="1" cellpadding="4">
+              <thead>
+              <tr>
+                <td width="20%">Date</td>
+                <td width="10%">Sum</td>
+                <td width="30%">Name</td>
+                <td width="10%">Confirmed</td>
+                <td width="20%">Description</td>
+                <td width="10%">From</td>
+                <td width="10%">To</td>
+              </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let transaction of account.account.outcome">
+                  <td>{{transaction.date | date}}</td>
+                  <td>{{transaction.sum}}</td>
+                  <td>{{transaction.name}}</td>
+                  <td>{{transaction.confirmed}}</td>
+                  <td>{{transaction.description}}</td>
+                  <td>{{transaction.from.name}}</td>
+                  <td>{{transaction.to.name}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

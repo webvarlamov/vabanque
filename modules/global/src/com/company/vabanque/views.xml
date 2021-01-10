@@ -9,4 +9,8 @@
         <property name="incomeTotal"/>
         <property name="outcomeTotal"/>
     </view>
+    <view entity="vabanque_Transaction" name="_transaction-with-from-to" extends="_local">
+        <property name="from" view="_minimal"/>
+        <property name="to" view="_minimal"/>
+    </view>
 </views>

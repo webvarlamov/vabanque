@@ -3,3 +3,15 @@
   grid-template-columns: 1fr 1fr;
   width: 100%;
 }
+
+.split-tables {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+table {
+  max-height: 250px;
+  overflow: scroll;
+  display: block;
+}

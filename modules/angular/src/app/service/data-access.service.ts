@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {CubaApp, EntitiesLoadOptions, FetchOptions} from '@cuba-platform/rest';
 import {from, Observable} from 'rxjs';
 import {Token} from '../app-store/types/auth/token';
-import {StandardEntity} from '../app-store/types/cuba/entities/base/sys$StandardEntity';
 import {Account} from '../app-store/types/cuba/entities/vabanque_Account';
+import {Transaction} from "../app-store/types/cuba/entities/vabanque_Transaction";
+import {map, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,18 @@ export class DataAccessService {
 
   public loadAccounts(options?: EntitiesLoadOptions, fetchOptions?: FetchOptions): Observable<Account[]> {
     return from(this.cubaApp.loadEntities<Account>( Account.NAME, {view: '_local'}));
+  }
+
+  public loadTransactions(ids: string[]): Observable<Transaction[]>  {
+    return from(this.cubaApp.searchEntities<Transaction>( Transaction.NAME, {conditions: [
+        {property: 'to.id', operator: "in", value: ids},
+      ]}, {view: "_transaction-with-from-to"})).pipe(
+        map(transactions => {
+          return transactions.map(t => {
+            t.date = new Date(t.date);
+            return t;
+          })
+        })
+    );
   }
 }
